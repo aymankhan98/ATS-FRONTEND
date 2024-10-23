@@ -1,6 +1,6 @@
 import { Plus, Bell } from "lucide-react";
 
-export const dropdownItems = ["ATS", "LMS", "KTS"];
+export const dropdownItems = ["ATS", "LMS", "KTS", "TTS"];
 
 export const navLinks = [
   { title: "Dashboard", active: true },

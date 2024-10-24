@@ -1,7 +1,6 @@
 "use client";
 
 import App from "./components/common/dataTable";
-import TopRecruiters from "./components/common/dataTable";
 import TimeSeriesChart from "./components/common/lineGraph";
 import StatCard from "./components/dashboard/DbCards";
 import DbNavbar from "./components/dashboard/DbNavbar";

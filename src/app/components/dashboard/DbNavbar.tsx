@@ -18,7 +18,7 @@ import {
 } from "../../dummy data/DbNavbarData";
 
 const DbNavbar: React.FC = () => (
-  <Navbar>
+  <Navbar className=" ">
     <Brand>
       <Image src="/pnLogo.png" alt="Logo" width={120} height={120} />
       <Dropdown>

@@ -12,7 +12,7 @@ const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
   message,
 }) => {
   return (
-    <div className="flex items-center space-x-4 p-4">
+    <div className="flex items-center pt-9">
       {/* Icon */}
       <span className="text-2xl">👋</span>
 

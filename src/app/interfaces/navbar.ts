@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { LucideIcon } from "lucide-react";
+import { ForwardRefExoticComponent, ReactNode, RefAttributes } from "react";
+import { LucideIcon, LucideProps } from "lucide-react";
 
 export interface NavbarProps {
   children: ReactNode;
@@ -30,4 +30,15 @@ export interface ActionsProps {
 export interface ActionButtonProps {
   icon?: LucideIcon;
   label?: string;
+}
+
+export interface INavbarUpperProps {
+  actionIcons: {
+    icon: ForwardRefExoticComponent<
+      Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+    >;
+    label: string;
+  }[];
+  navLinks: { title: string; active: boolean }[];
+  dropdownItems: string[];
 }

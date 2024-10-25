@@ -4,28 +4,61 @@ import {
   ActionButtonProps,
   ActionsProps,
   BrandProps,
+  INavbarUpperProps,
   NavbarProps,
   NavLinkProps,
   NavLinksProps,
 } from "@/app/interfaces/navbar";
 import { Search, ChevronDown } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "../shadcn/avatar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import NavbarUpper from "./NavbarUpper";
+import {
+  actionIcons,
+  dropdownItems,
+  navLinks,
+} from "@/app/dummyData/DbNavbarData";
+import NavbarBottom from "./NavbarBottom";
 
-const Navbar = ({ children, className = "" }: NavbarProps) => {
-  const childrenArray = React.Children.toArray(children);
+interface INavbarProps extends React.BaseHTMLAttributes<HTMLBaseElement> {}
+
+const Navbar: React.FC<INavbarProps> = (props) => {
+  // const childrenArray = React.Children.toArray(children);
+  const [dynamicData, setDynamicData] = useState<
+    INavbarUpperProps | undefined
+  >();
+
+  useEffect(() => {
+    if (!actionIcons || !dropdownItems || !navLinks) {
+      return;
+    }
+    setDynamicData({
+      actionIcons,
+      dropdownItems,
+      navLinks,
+    });
+  }, [navLinks, actionIcons, dropdownItems]);
+
+  if (!dynamicData) {
+    return (
+      <div className="w-full h-full bg-grey">
+        Oops! can't get the data. are you sure you're calling the right API?
+      </div>
+    );
+  }
 
   return (
     <nav
-      className={`flex items-center justify-between bg-[#242ACD] px-4 py-2 text-white text-[13px] font-[500]    w ${className}`}
+      {...props}
+      className={`flex-row items-center justify-center` + props.className}
     >
-      <div className="flex items-center space-x-8">
-        {childrenArray[0]}
-        {childrenArray[1]}
-      </div>
-      <div className="flex items-center space-x-4">
-        {childrenArray.slice(2)}
-      </div>
+      <NavbarUpper
+        actionIcons={dynamicData.actionIcons}
+        dropdownItems={dynamicData.dropdownItems}
+        navLinks={dynamicData.navLinks}
+      />
+      <NavbarBottom />
+      {/* <div className="flex items-center w-full">{childrenArray[1]}</div> */}
     </nav>
   );
 };

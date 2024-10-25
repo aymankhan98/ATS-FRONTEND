@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useSidebar } from "./sidebarContext";
 import {
-  CoreSidebarProps,
   SidebarItem,
   SidebarSection,
+  CoreSidebarProps,
 } from "@/app/interfaces/sidebarInterface";
-import { useBoolean } from "usehooks-ts";
 
-export const CoreSidebar = ({ sections, headerContent }: CoreSidebarProps) => {
-  const { value: isCollapsed } = useBoolean(false);
+const Sidebar = ({ sections }: Pick<CoreSidebarProps, "sections">) => {
+  const { isCollapsed } = useSidebar();
 
   const renderItem = (item: SidebarItem) => (
     <a
@@ -46,20 +45,15 @@ export const CoreSidebar = ({ sections, headerContent }: CoreSidebarProps) => {
   );
 
   return (
-    <div className="flex">
-      <div
-        className={`fixed top-16 z-10 h-screen bg-white shadow-lg transition-all duration-500 ease-in-out overflow-hidden transform
-          ${isCollapsed ? "w-16" : "w-64"} pt-24`}
-      >
-        <div className="overflow-hidden">
-          {sections.map((section) => renderSection(section))}
-        </div>
+    <div
+      className={`fixed top-16 z-10 h-screen bg-white shadow-lg transition-all duration-500 ease-in-out overflow-hidden transform
+        ${isCollapsed ? "w-16" : "w-64"} pt-24`}
+    >
+      <div className="overflow-hidden">
+        {sections.map((section) => renderSection(section))}
       </div>
-
-      <div
-        className={`flex-1 mt-16 transition-all duration-500 ease-in-out transform
-          ${isCollapsed ? "ml-16" : "ml-64"}`}
-      ></div>
     </div>
   );
 };
+
+export default Sidebar;

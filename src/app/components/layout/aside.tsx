@@ -1,69 +1,13 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
-  CoreSidebarComponentProps,
-  SidebarAction,
-  SidebarContextType,
+  CoreSidebarProps,
   SidebarItem,
-  SidebarProviderProps,
   SidebarSection,
-  SidebarState,
 } from "@/app/interfaces/sidebarInterface";
 
-const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
-
-const sidebarReducer = (
-  state: SidebarState,
-  action: SidebarAction
-): SidebarState => {
-  switch (action.type) {
-    case "TOGGLE_COLLAPSE":
-      return {
-        ...state,
-        isCollapsed: !state.isCollapsed,
-      };
-    default:
-      return state;
-  }
-};
-
-export const SidebarProvider: React.FC<SidebarProviderProps> = ({
-  children,
-  initialCollapsed = false,
-}) => {
-  const [state, dispatch] = useReducer(sidebarReducer, {
-    isCollapsed: initialCollapsed,
-  });
-
-  return (
-    <SidebarContext.Provider value={{ state, dispatch }}>
-      {children}
-    </SidebarContext.Provider>
-  );
-};
-
-export const useSidebar = () => {
-  const context = useContext(SidebarContext);
-  if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider");
-  }
-
-  const toggleCollapsed = () => {
-    context.dispatch({ type: "TOGGLE_COLLAPSE" });
-  };
-
-  return {
-    isCollapsed: context.state.isCollapsed,
-    toggleCollapsed,
-  };
-};
-
-export const CoreSidebar = ({
-  sections,
-  headerContent,
-  children,
-}: CoreSidebarComponentProps) => {
-  const { isCollapsed, toggleCollapsed } = useSidebar();
+export const CoreSidebar = ({ sections, headerContent }: CoreSidebarProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const renderItem = (item: SidebarItem) => (
     <a
@@ -100,7 +44,7 @@ export const CoreSidebar = ({
     <div className="flex">
       <div className="w-full h-16 bg-[#363BC9] flex items-center justify-between px-6 z-20 fixed">
         <button
-          onClick={toggleCollapsed}
+          onClick={() => setIsCollapsed(!isCollapsed)}
           className="h-full flex items-center justify-center transition-colors duration-200 text-white font-medium"
         >
           <Image
@@ -115,6 +59,7 @@ export const CoreSidebar = ({
         </button>
         {headerContent}
       </div>
+
       <div
         className={`${
           isCollapsed ? "w-16" : "w-64"
@@ -122,13 +67,12 @@ export const CoreSidebar = ({
       >
         {sections.map((section) => renderSection(section))}
       </div>
+
       <div
         className={`flex-1 mt-16 transition-all duration-300 ${
           isCollapsed ? "ml-16" : "ml-64"
         }`}
-      >
-        {children}
-      </div>
+      ></div>
     </div>
   );
 };

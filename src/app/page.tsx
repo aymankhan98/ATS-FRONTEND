@@ -1,5 +1,4 @@
 "use client";
-
 import App from "./components/common/dataTable";
 import TimeSeriesChart from "./components/common/lineGraph";
 import StatCard from "./components/dashboard/DbCards";
@@ -9,20 +8,18 @@ import DbWelcomeBanner from "./components/dashboard/DbWelcomeBanner";
 
 export default function Home() {
   return (
-    <div className="  flex flex-col ">
+    <div className="flex flex-col">
       <DbNavbar />
-
       <div className="flex flex-1">
         <Dbsidebar />
-
-        <div className="flex-1 p-6 mt-10">
+        <main className="flex-1 p-6 mt-10">
           <DbWelcomeBanner />
           <StatCard />
-        </div>
-      </div>
-      <div className="ml-[280px]  flex gap-4">
-        <TimeSeriesChart />
-        <App />
+          <div className="flex gap-4 mt-6">
+            <TimeSeriesChart />
+            <App />
+          </div>
+        </main>
       </div>
     </div>
   );

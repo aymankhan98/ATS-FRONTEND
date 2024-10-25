@@ -1,4 +1,5 @@
 import React from "react";
+import WavingHand from "../../../../public/WavingHand";
 
 interface WelcomeBannerProps {
   name: string;
@@ -12,16 +13,17 @@ const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
   message,
 }) => {
   return (
-    <div className="flex items-center pt-9">
-      {/* Icon */}
-      <span className="text-2xl">👋</span>
-
-      {/* Content */}
+    <div className="flex gap-[10px] items-start pt-9">
+      <span className="text-2xl">
+        <WavingHand />
+      </span>
       <div>
-        <h1 className="text-lg font-semibold text-gray-900">
+        <h1 className="text-[20px] font-semibold text-[#0B1215]">
           {greeting}, {name}
         </h1>
-        <p className="text-sm text-gray-600">{message}</p>
+        <p className="text-[13px] font-[400] text-gray-600 pt-[10px]">
+          {message}
+        </p>
       </div>
     </div>
   );

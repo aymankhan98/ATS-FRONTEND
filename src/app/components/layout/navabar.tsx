@@ -17,7 +17,7 @@ const Navbar = ({ children, className = "" }: NavbarProps) => {
 
   return (
     <nav
-      className={`flex items-center justify-between bg-[#242ACD] px-4 py-2 text-white text-[13px] font-[500] ${className}`}
+      className={`flex items-center justify-between bg-[#242ACD] px-4 py-2 text-white text-[13px] font-[500]    w ${className}`}
     >
       <div className="flex items-center space-x-8">
         {childrenArray[0]}
@@ -75,7 +75,10 @@ const Dropdown = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="z-30 ">
+    <div
+      className="
+z-50 "
+    >
       <button
         className="flex items-center space-x-1 focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}

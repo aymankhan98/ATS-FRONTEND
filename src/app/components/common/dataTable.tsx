@@ -15,13 +15,19 @@ type Recruiter = {
   status: "gold" | "silver" | "bronze" | "default";
 };
 
-// Dummy data
 const recruiters: Recruiter[] = [
   { id: 1, name: "Davis Curtis", submissions: 35, rank: 1, status: "gold" },
-  { id: 2, name: "Alena Dorin", submissions: 35, rank: 2, status: "silver" },
-  { id: 3, name: "Madelyn Dias", submissions: 35, rank: 3, status: "bronze" },
-  { id: 4, name: "Zain Vaccaro", submissions: 35, rank: 4, status: "default" },
-  { id: 5, name: "John Craig", submissions: 35, rank: 5, status: "default" },
+  { id: 2, name: "Alena Dorin", submissions: 33, rank: 2, status: "silver" },
+  { id: 3, name: "Madelyn Dias", submissions: 30, rank: 3, status: "bronze" },
+  { id: 4, name: "Zain Vaccaro", submissions: 28, rank: 4, status: "default" },
+  { id: 5, name: "John Craig", submissions: 27, rank: 5, status: "default" },
+  {
+    id: 6,
+    name: "Sophia Mitchell",
+    submissions: 26,
+    rank: 6,
+    status: "default",
+  },
 ];
 
 // Function to get the correct SVG avatar component based on status
@@ -38,10 +44,8 @@ const getAvatarComponent = (status: string) => {
   }
 };
 
-// Recruiter Row Component
 const RecruiterRow = ({ recruiter }: { recruiter: Recruiter }) => {
-  const hasBadge = recruiter.rank <= 3; // Only show badge for top 3
-
+  const hasBadge = recruiter.rank <= 3;
   return (
     <div className="p-2 border-b border-gray-200 last:border-none">
       <div className="   space-x-4">
@@ -65,10 +69,9 @@ const RecruiterRow = ({ recruiter }: { recruiter: Recruiter }) => {
   );
 };
 
-// Main Leaderboard Component
 const Leaderboard = () => {
   return (
-    <div className="bg-white p-4 w-[500px] border-[2px] border-[#ECEEF6] h-[487px]">
+    <div className="bg-white p-4 w-[500px] border-[2px] border-[#ECEEF6] ">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Top Recruiters by Submissions</h2>
         <button className="px-2 py-1 bg-gray-200 text-sm rounded-md">
@@ -84,7 +87,6 @@ const Leaderboard = () => {
   );
 };
 
-// App Component
 export default function App() {
   return (
     <div className="">

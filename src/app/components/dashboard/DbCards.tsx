@@ -12,8 +12,8 @@ const StatCard = () => {
       <div className="flex items-center gap-2">
         {increase ? (
           <>
-            <FaArrowUp className="text-green-500" />
-            <span className="text-green-500">{percentage}% Increase</span>
+            <FaArrowUp className="text-[#0FAF62]" />
+            <span className="text-[#0FAF62]">{percentage}% Increase</span>
           </>
         ) : (
           <>

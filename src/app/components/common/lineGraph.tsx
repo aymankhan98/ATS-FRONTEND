@@ -35,7 +35,7 @@ const TimeSeriesChart = () => {
         </div>
         <DatePickerWithRange />
       </div>
-      <LineChart width={800} height={300} data={data} className="">
+      <LineChart width={900} height={300} data={data} className="">
         <CartesianGrid horizontal={true} vertical={false} stroke="#f0f0f0" />
         <XAxis
           dataKey="time"
@@ -54,7 +54,7 @@ const TimeSeriesChart = () => {
           }}
         />
         <Line
-          type="monotone"
+          type="natural"
           dataKey="value"
           stroke="#1a73e8"
           strokeWidth={2}

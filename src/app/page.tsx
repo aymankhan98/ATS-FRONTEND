@@ -15,7 +15,7 @@ export default function Home() {
         <main className="flex-1 p-6 mt-10">
           <DbWelcomeBanner />
           <StatCard />
-          <div className="flex gap-4 mt-6">
+          <div className="grid grid-cols-3 gap-4 mt-6">
             <TimeSeriesChart />
             <App />
           </div>

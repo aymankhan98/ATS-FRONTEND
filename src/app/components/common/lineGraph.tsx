@@ -25,7 +25,7 @@ const data = [
 
 const TimeSeriesChart = () => {
   return (
-    <div className="w-[1000px] flex flex-col justify-start p-4 border-[2px] border-[#ECEEF6]">
+    <div className="  col-start-1 col-end-3  justify-start p-4 border-[2px] border-[#ECEEF6]">
       <div className="flex justify-between items-center mb-4">
         <div>
           <h2 className="text-lg font-semibold mb-1">
@@ -35,7 +35,7 @@ const TimeSeriesChart = () => {
         </div>
         <DatePickerWithRange />
       </div>
-      <LineChart width={900} height={300} data={data} className="">
+      <LineChart width={1000} height={300} data={data} className="">
         <CartesianGrid horizontal={true} vertical={false} stroke="#f0f0f0" />
         <XAxis
           dataKey="time"

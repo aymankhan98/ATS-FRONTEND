@@ -89,7 +89,7 @@ const Leaderboard = () => {
 
 export default function App() {
   return (
-    <div className="">
+    <div className="col-start-3">
       <Leaderboard />
     </div>
   );

@@ -1,17 +1,50 @@
 "use client";
 
-import { Navbar } from "../navbar/index";
-import NavbarUpper from "../navbar/NavbarUpper";
-import { INavbarUpperProps } from "@/app/interfaces/navbar";
+import {
+  ActionButton,
+  Actions,
+  Brand,
+  Navbar,
+  NavLink,
+  NavLinks,
+  SearchBar,
+  Dropdown,
+} from "../layout/navabar";
+import Image from "next/image";
+import {
+  dropdownItems,
+  navLinks,
+  actionIcons,
+} from "../../dummy data/DbNavbarData";
 
-interface INavbarProps {
-  navbarUpperProps: INavbarUpperProps;
-  navbarBottomProps: unknown;
-}
+const DbNavbar: React.FC = () => (
+  <Navbar className=" ">
+    <Brand>
+      <Image src="/pnLogo.png" alt="Logo" width={120} height={120} />
+      <Dropdown>
+        {dropdownItems.map((item, index) => (
+          <li key={index} className="px-4 py-2 hover:bg-gray-200">
+            {item}
+          </li>
+        ))}
+      </Dropdown>
+    </Brand>
 
-const DbNavbar = (props: INavbarProps) => (
-  <Navbar className="flex-row">
-    <NavbarUpper {...props.navbarUpperProps} />
+    <NavLinks>
+      {navLinks.map((link, index) => (
+        <NavLink key={index} active={link.active}>
+          {link.title}
+        </NavLink>
+      ))}
+    </NavLinks>
+
+    <Actions>
+      <SearchBar />
+
+      {actionIcons.map((action, index) => (
+        <ActionButton key={index} icon={action.icon} label={action.label} />
+      ))}
+    </Actions>
   </Navbar>
 );
 

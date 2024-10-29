@@ -4,7 +4,7 @@ import InterviewsIcon from "../../../../public/InterviewsIcon";
 import JobsAssignedIcon from "../../../../public/JobsAssignedIcon";
 import AssignmentIcon from "../../../../public/AssignmentIcon";
 import SubmissionsIcon from "../../../../public/SubmissionsIcon";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Import icons for arrows
 
 const StatCard = () => {
   const renderArrowAndText = (increase: boolean, percentage: number) => {

@@ -6,6 +6,7 @@ import AchievementBadge from "../../../../public/AchievementBadge";
 import AchievementBadge2 from "../../../../public/AchievementBadge2";
 import AchievementBadge3 from "../../../../public/AchievementBadge3";
 
+// Types for the data
 type Recruiter = {
   id: number;
   name: string;
@@ -29,6 +30,7 @@ const recruiters: Recruiter[] = [
   },
 ];
 
+// Function to get the correct SVG avatar component based on status
 const getAvatarComponent = (status: string) => {
   switch (status) {
     case "gold":

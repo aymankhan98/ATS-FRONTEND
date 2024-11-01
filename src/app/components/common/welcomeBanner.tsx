@@ -13,7 +13,7 @@ const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
   message,
 }) => {
   return (
-    <div className="flex gap-[10px] items-start pt-9">
+    <div className="flex gap-[10px] items-start ">
       <span className="text-2xl">
         <WavingHand />
       </span>

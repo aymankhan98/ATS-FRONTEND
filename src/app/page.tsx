@@ -1,26 +1,27 @@
 "use client";
-import App from "./components/common/dataTable";
-import TimeSeriesChart from "./components/common/lineGraph";
-import StatCard from "./components/dashboard/DbCards";
-import DbNavbar from "./components/dashboard/DbNavbar";
-import { Dbsidebar } from "./components/dashboard/DbSidebar";
-import DbWelcomeBanner from "./components/dashboard/DbWelcomeBanner";
+
+import { sidebarData } from "../app/dummy data/DbSidebarData";
+import CombinedNavbar from "./components/main-layout";
+import { Button } from "./components/shadcn/button";
+import { Toaster } from "./components/shadcn/toaster";
+import { toast } from "./components/shadcn/use-toast";
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <DbNavbar />
-      <div className="flex flex-1">
-        <Dbsidebar />
-        <main className="flex-1 p-6 mt-10">
-          <DbWelcomeBanner />
-          <StatCard />
-          <div className="grid grid-cols-3 gap-4 mt-6">
-            <TimeSeriesChart />
-            <App />
-          </div>
-        </main>
-      </div>
-    </div>
+    <main>
+      <CombinedNavbar sections={sidebarData} />
+      <Button
+        variant="outline"
+        onClick={() => {
+          toast({
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with your request.",
+          });
+        }}
+      >
+        Show Toast
+      </Button>
+      <Toaster />
+    </main>
   );
 }

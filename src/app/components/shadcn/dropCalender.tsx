@@ -52,7 +52,6 @@ function Calendar({
         day_hidden: "invisible",
         ...classNames,
       }}
-      // Use custom CSS to style the default navigation buttons
       {...props}
     />
   );

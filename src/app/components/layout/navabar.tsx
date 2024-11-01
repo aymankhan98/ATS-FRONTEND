@@ -77,7 +77,7 @@ const Dropdown = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
       className="
-z-50 "
+"
     >
       <button
         className="flex items-center space-x-1 focus:outline-none"

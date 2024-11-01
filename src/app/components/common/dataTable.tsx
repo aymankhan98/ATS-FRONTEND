@@ -71,7 +71,7 @@ const RecruiterRow = ({ recruiter }: { recruiter: Recruiter }) => {
 
 const Leaderboard = () => {
   return (
-    <div className="bg-white p-4 w-[500px] border-[2px] border-[#ECEEF6] ">
+    <div className="bg-white p-4 w-full border-[2px] border-[#ECEEF6] ">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Top Recruiters by Submissions</h2>
         <button className="px-2 py-1 bg-gray-200 text-sm rounded-md">

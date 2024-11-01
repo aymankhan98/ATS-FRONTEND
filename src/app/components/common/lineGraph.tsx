@@ -1,13 +1,19 @@
 "use client";
 import React from "react";
+import dynamic from "next/dynamic";
+
 import {
-  LineChart,
+  // LineChart,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
 } from "recharts";
+const LineChart = dynamic(
+  () => import("recharts").then((line) => line.LineChart),
+  { ssr: false }
+);
 import { DatePickerWithRange } from "./calender";
 
 const data = [

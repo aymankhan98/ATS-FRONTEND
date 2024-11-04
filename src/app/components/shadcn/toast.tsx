@@ -131,3 +131,13 @@ export {
   ToastDescription,
   ToastClose,
 };
+// toast.ts
+export type ToastActionElement = React.ReactElement | null; // Example definition
+
+export interface ToastProps {
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  action?: ToastActionElement;
+  open?: boolean;
+  duration?: number; // Optional duration for auto-dismissal
+}
